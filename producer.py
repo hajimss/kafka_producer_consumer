@@ -17,19 +17,7 @@ producer = KafkaProducer(bootstrap_servers=['192.168.1.8:9092'],
 
 @app.route('/user', methods=['GET','POST'])
 def user():
-    if request.method == 'GET':
-        return render_template("user.html")
-
-    if request.method =='POST':
-        Id_num = input('Enter your ID: ')
-        FirstName = input('Enter your First Name: ')
-        LastName = input('Enter your Last Name: ')
-        Age = input('Enter your Age: ')
-        registered_user = new_user(Id_num, FirstName, LastName, Age)
-        print(registered_user)
-        producer.send("registered_user", registered_user)
-        time.sleep(4)
-        return render_template("user.html")
+    return render_template("user.html")
 
 ##############################################################################################
 
@@ -39,6 +27,18 @@ def viewtable():
     producer.send("registered_user", "Someone viewed Persons.")
     return render_template("viewtable.html", response=response)
 
+
+##############################################################################################
+
+@app.route('/newuser', methods=["GET", "POST"])
+def newuser():
+    if request.method == "POST":
+        registered_user = new_user(request.form['id'], request.form['fname'], request.form['lname'], request.form['age'])
+        print(registered_user)
+        producer.send("registered_user", registered_user)
+        return redirect(url_for("user"))
+    else:
+        return render_template("newuser.html")
 
 ##############################################################################################
 
