@@ -28,10 +28,10 @@ def view_all(table):
     #method GET
     cur = mydb.cursor()
     cur.execute("SELECT * FROM {}".format(table))
-    result = cur.fetchall()
+    response = list(cur.fetchall())
+#    response = ''
+#    for x in result:
+#        response = response + str(x)
+#        print(x)
 
-    for x in result:
-        print(x)
-    
-    response = "Someone viewed {}".format(table)
     return response

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="table table-sm">
+    <thead class='thead-dark'>
+        <th scope="col">ID Number</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Age</th>
+    </thead>
+{% for res in response %}
+    <tr>
+        <td>{{res[0]}}</td>
+        <td>{{res[1]}}</td>
+        <td>{{res[2]}}</td>
+        <td>{{res[3]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{url_for("user")}}"><button class="btn btn-primary">&lt;Back</button></a>
+
+
+{% endblock %}
