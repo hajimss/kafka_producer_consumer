@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" style="width: 50rem;">
+    <h3>New User Form</h3>
+    <form action="#" method="POST">
+        <div class="mb-3">
+            <label for="id">ID Number:</label>
+            <input type="text" class="form-control" id="id" name="id">
+            <br>
+            <label for="fname">First Name:</label>
+            <input type="text" class="form-control" id="fname" name='fname'>
+            <br>
+            <label for="lname">Last Name:</label>
+            <input type="text" class="form-control" id="lname" name="lname">
+            <br>
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" name="age">
+            <br>
+            <button class='btn btn-primary m-1' type="submit">Submit</button>
+        </div>
+    </form>
+    <a href="{{url_for("user")}}"><button class="btn btn-primary m-1">&lt;Back</button></a>
+</div>
+
+
+{% endblock %}
