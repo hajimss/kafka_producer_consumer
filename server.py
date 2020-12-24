@@ -21,7 +21,7 @@ def new_user(ID, FirstName, LastName, Age):
     cur.execute(mysql_insert_query)
     mydb.commit()
 
-    response = "New entry ({}, '{}', '{}', {}) inserted.".format(ID, FirstName, LastName, Age)
+    response = "New entry ({}, '{}', '{}', {}) inserted".format(ID, FirstName, LastName, Age)
     return response
 
 def view_all(table):
@@ -33,5 +33,14 @@ def view_all(table):
 #    for x in result:
 #        response = response + str(x)
 #        print(x)
-
     return response
+
+def delete_user(id):
+    mysql_delete_query = "DELETE FROM Persons where ID = {}".format(id)
+    cur = mydb.cursor()
+    cur.execute(mysql_delete_query)
+    mydb.commit()
+    return (str(cur.rowcount) + " record(s) deleted")
+
+
+    

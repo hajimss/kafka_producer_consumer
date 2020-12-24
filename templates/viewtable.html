@@ -14,6 +14,11 @@
         <td>{{res[1]}}</td>
         <td>{{res[2]}}</td>
         <td>{{res[3]}}</td>
+        <td>
+            <form action="#" method="GET">
+                <a href="{{url_for('deleteuser', id=res[0])}}"><input type="button" class="btn btn-danger" value="Delete"></a>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
