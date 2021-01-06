@@ -12,13 +12,13 @@ app.secret_key = "secret"
 def json_serializer(data):
     return json.dumps(data).encode('utf-8')
 
-producer1 = KafkaProducer(bootstrap_servers=['192.168.1.8:9092'],
+producer1 = KafkaProducer(bootstrap_servers=['192.168.1.2:9092'],
                         value_serializer=json_serializer)
 
-producer2 = KafkaProducer(bootstrap_servers=['192.168.1.8:9092'],
+producer2 = KafkaProducer(bootstrap_servers=['192.168.1.2:9092'],
                         value_serializer=json_serializer)
 
-producer3 = KafkaProducer(bootstrap_servers=['192.168.1.8:9092'],
+producer3 = KafkaProducer(bootstrap_servers=['192.168.1.2:9092'],
                         value_serializer=json_serializer)
 
 producer_dict = { 
